@@ -24,7 +24,6 @@ export default function Navbar() {
             if (!navRef.current) return;
 
             const probeRect = navRef.current.getBoundingClientRect();
-            // Probe exactly the visual center of the navbar and screen
             const probeY = probeRect.top + (probeRect.height / 2);
             const probeX = window.innerWidth / 2;
 
@@ -34,7 +33,6 @@ export default function Navbar() {
             
             let inOrangeZone = false;
 
-            // Math collision check - much safer than elementFromPoint over GSAP tracks
             for (const zone of orangeZones) {
                 const rect = zone.getBoundingClientRect();
                 if (
@@ -63,8 +61,9 @@ export default function Navbar() {
 
     return (
         <>
-        <nav ref={navRef} className="fixed top-6 left-0 right-0 z-50 px-6 py-4 md:px-12 bg-transparent">
-            <div className="grid grid-cols-3 items-center">
+        <nav ref={navRef} className="fixed top-4 md:top-6 left-0 right-0 z-50 px-5 py-3 md:px-12 bg-transparent">
+            {/* Desktop Layout */}
+            <div className="hidden md:grid grid-cols-3 items-center">
                 <button
                     type="button"
                     onClick={() => setIsMenuOpen(true)}
@@ -122,6 +121,37 @@ export default function Navbar() {
                         EN
                     </button>
                 </div>
+            </div>
+
+            {/* Mobile Layout */}
+            <div className="flex md:hidden items-center justify-between bg-white/90 backdrop-blur-md px-4 py-3 rounded-2xl shadow-sm border border-black/5">
+                <TransitionLink href="/">
+                    <div 
+                        className="h-7 w-28 transition-colors duration-300 bg-[var(--color-brand-orange)]"
+                        style={{
+                            maskImage: 'url(/logo.png)',
+                            maskSize: 'contain',
+                            maskRepeat: 'no-repeat',
+                            maskPosition: 'center',
+                            WebkitMaskImage: 'url(/logo.png)',
+                            WebkitMaskSize: 'contain',
+                            WebkitMaskRepeat: 'no-repeat',
+                            WebkitMaskPosition: 'center',
+                        }}
+                        aria-label="EYEVIEW"
+                        role="img"
+                    />
+                </TransitionLink>
+                
+                <button
+                    type="button"
+                    onClick={() => setIsMenuOpen(true)}
+                    aria-label="Open menu"
+                    className="inline-flex flex-col items-end gap-1.5 p-2 rounded-full hover:bg-black/5 transition-colors"
+                >
+                    <span className="block h-[2.5px] w-6 bg-[var(--color-brand-black)] rounded-full" />
+                    <span className="block h-[2.5px] w-4 bg-[var(--color-brand-orange)] rounded-full" />
+                </button>
             </div>
         </nav>
         <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

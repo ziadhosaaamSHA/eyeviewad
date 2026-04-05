@@ -17,10 +17,21 @@ export default function Hero() {
     useGSAP(() => {
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        tl.from('.h1-anim', { y: 40, opacity: 0, scale: 0.95, duration: 0.6 }, '-=0.2')
-            .from('.p-anim', { y: 20, opacity: 0, duration: 0.5 }, '-=0.3')
-            .from('.proof-anim', { opacity: 0, y: 10, duration: 0.5, stagger: 0.1 }, '+=0.2');
-
+        tl.fromTo('.h1-anim', 
+            { y: 40, opacity: 0, scale: 0.95 }, 
+            { y: 0, opacity: 1, scale: 1, duration: 0.6 }, 
+            '-=0.2'
+        )
+        .fromTo('.p-anim', 
+            { y: 20, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.5 }, 
+            '-=0.3'
+        )
+        .fromTo('.proof-anim', 
+            { opacity: 0, y: 10 }, 
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, 
+            '+=0.2'
+        );
     }, { scope: containerRef });
 
     useEffect(() => {
@@ -39,7 +50,6 @@ export default function Hero() {
 
         const maxOffset = 8;
         const baseOffsetX = -14; // Correcting for the SVG pupils being drawn too far right
-
         const rangeX = rect.width / 2;
         const rangeY = rect.height / 2;
         const normX = rangeX ? dx / rangeX : 0;
@@ -82,36 +92,39 @@ export default function Hero() {
             icons={demoIcons}
             onPointerMove={handlePointerMove}
             onPointerLeave={handlePointerLeave}
-            className="!bg-transparent pt-16 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen"
+            className="!bg-transparent pt-[12vh] pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[100dvh]"
         >
             <div
                 ref={containerRef}
-                className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center gap-4 mt-4 sm:mt-6"
+                className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center mt-0 sm:mt-6"
             >
+                {/* SVG Eyes Container adjusted for mobile */}
+                <div className="w-full flex justify-center mb-2 md:mb-6">
+                    <EyesSvg
+                        containerRef={eyesContainerRef}
+                        className="p-anim flex justify-center [&>svg]:h-auto [&>svg]:w-[min(70vw,360px)] [&>svg]:max-h-[25vh] md:[&>svg]:max-h-[30vh]"
+                    />
+                </div>
 
-                <EyesSvg
-                    containerRef={eyesContainerRef}
-                    className="p-anim flex justify-center [&>svg]:h-auto [&>svg]:w-[min(60vw,360px)] [&>svg]:max-h-[30vh]"
-                />
-
-                <h1 className="h1-anim ey-heading-lg text-balance text-[var(--color-brand-orange)]">
+                <h1 className="h1-anim ey-heading-lg text-balance text-[unset] text-[var(--color-brand-orange)] leading-[0.85] tracking-[-0.04em] px-2 text-[clamp(2.75rem,8vw,4rem)]">
                     WE MAKE PEOPLE CHOOSE <span className="text-brand-black">YOU.</span>
                 </h1>
 
-                <p className="p-anim ey-subheading text-[var(--color-brand-orange)] text-sm sm:text-base md:text-lg text-balance">
+                <p className="p-anim ey-subheading text-[var(--color-brand-orange)] text-[10px] sm:text-xs md:text-sm tracking-[0.1em] text-balance mt-4 md:mt-6 max-w-[280px] sm:max-w-sm md:max-w-none opacity-80 mx-auto">
                     ONLINE OR OFFLINE, THEY WILL REACH OUT TO YOU NO MATTER WHAT.
                 </p>
 
-                <div className="w-full max-w-sm sm:max-w-md pt-2">
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                        <TransitionLink href="/portfolio" className="w-full">
-                            <button className="group ey-btn-outline w-full">
+                {/* Hero CTA Buttons - Chunkier on mobile, Stacked */}
+                <div className="w-full max-w-[280px] sm:max-w-md pt-8 md:pt-10 mx-auto transition-all p-anim">
+                    <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3 md:gap-4">
+                        <TransitionLink href="/portfolio" className="w-full flex-1">
+                            <button className="group w-full inline-flex items-center justify-center rounded-full border-2 border-[var(--color-brand-black)] px-6 py-[18px] md:py-4 font-sans text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-brand-black)] transition-all hover:bg-[var(--color-brand-black)] hover:text-white active:scale-95">
                                 Our Portfolio
                             </button>
                         </TransitionLink>
 
-                        <TransitionLink href="/contact" className="w-full">
-                            <button className="group ey-btn-primary w-full">
+                        <TransitionLink href="/contact" className="w-full flex-1">
+                            <button className="group w-full inline-flex items-center justify-center rounded-full bg-[var(--color-brand-orange)] px-6 py-[18px] md:py-4 font-sans text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-white transition-all shadow-[0_8px_20px_rgba(251,105,2,0.25)] hover:bg-[var(--color-brand-black)] hover:shadow-none hover:-translate-y-1 active:scale-95">
                                 Book Your Call
                             </button>
                         </TransitionLink>

@@ -19,19 +19,22 @@ export default function Footer({ isHome = false }: FooterProps) {
     useGSAP(() => {
         if (!isHome) return;
 
-        gsap.fromTo(contentRef.current, 
-            { yPercent: -50 },
-            {
-                yPercent: 0,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top bottom",
-                    end: "bottom bottom",
-                    scrub: true,
+        const mm = gsap.matchMedia();
+        mm.add("(min-width: 1024px)", () => {
+            gsap.fromTo(contentRef.current, 
+                { yPercent: -50 },
+                {
+                    yPercent: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top bottom",
+                        end: "bottom bottom",
+                        scrub: true,
+                    }
                 }
-            }
-        );
+            );
+        });
     }, { scope: containerRef, dependencies: [isHome] });
 
     return (

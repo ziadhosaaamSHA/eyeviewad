@@ -159,10 +159,10 @@ const FloatingIconsHero = React.forwardRef<
             )}
             {...props}
         >
-            {/* Container for the background floating icons */}
+            {/* Container for the background floating icons - hidden on mobile for static feel */}
             <motion.div
                 style={{ y: parallaxY }}
-                className="absolute inset-0 w-full h-full pointer-events-none"
+                className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none"
             >
                 {icons.map((iconData, index) => (
                     <Icon

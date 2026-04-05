@@ -13,12 +13,12 @@ export default function Home() {
     <main className="text-gray-900 min-h-screen font-sans flex flex-col relative">
       <Navbar />
       
-      {/* Sticky wrapper for Parallax Hero Entrance */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
+      {/* Sticky wrapper for Parallax Hero Entrance (Desktop Only) */}
+      <div className="relative lg:sticky lg:top-0 h-screen w-full overflow-hidden z-0">
         <Hero />
       </div>
 
-      {/* The rest of the page slides OVER the static Hero */}
+      {/* The rest of the page slides OVER the static Hero on Desktop */}
       <div className="relative z-10 bg-white">
         <AgencyOverview />
         <Services />

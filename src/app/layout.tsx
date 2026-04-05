@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
 import GlobalTransitionOverlay from '@/components/GlobalTransitionOverlay';
+import CustomCursor from '@/components/CustomCursor';
 
 const akzidenzGrotesk = localFont({
   variable: '--font-akzidenz',
@@ -86,6 +87,7 @@ export default function RootLayout({
     <html lang="en" className="light bg-white text-gray-900 scroll-smooth selection:bg-brand-orange selection:text-white">
       <body className={`${akzidenzGrotesk.variable} ${agrandirTight.variable} ${autheniaTextured.variable} font-sans antialiased relative min-h-screen bg-white text-gray-900`}>
         <GlobalTransitionOverlay />
+        <CustomCursor />
         <SmoothScroll />
         {children}
         <Analytics />
