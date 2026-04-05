@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import TransitionLink from '@/components/TransitionLink';
 import { FloatingIconsHero } from '@/components/ui/floating-icons-hero-section';
 import { demoIcons } from '@/components/FloatingIconsHeroDemo';
 import EyesSvg from '@/components/EyesSvg';
@@ -103,13 +104,17 @@ export default function Hero() {
 
                 <div className="w-full max-w-sm sm:max-w-md pt-2">
                     <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                        <button className="group ey-btn-outline w-full">
-                            Our Portfolio
-                        </button>
+                        <TransitionLink href="/portfolio" className="w-full">
+                            <button className="group ey-btn-outline w-full">
+                                Our Portfolio
+                            </button>
+                        </TransitionLink>
 
-                        <button className="group ey-btn-primary w-full">
-                            Book Your Call
-                        </button>
+                        <TransitionLink href="/contact" className="w-full">
+                            <button className="group ey-btn-primary w-full">
+                                Book Your Call
+                            </button>
+                        </TransitionLink>
                     </div>
                 </div>
             </div>

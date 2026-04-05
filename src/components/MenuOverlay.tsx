@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import TransitionLink from '@/components/TransitionLink';
 
 interface MenuOverlayProps {
   isOpen: boolean;
@@ -106,13 +107,15 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
       <div className="flex-1 flex flex-col items-center justify-center gap-4 mt-12 w-full max-w-4xl text-center">
         {MENU_LINKS.map((link, index) => (
           <div key={link.name} className="overflow-hidden p-2">
-            <h2 
-                ref={el => { if(el) linksRef.current[index] = el; }}
-                className="ey-heading-xl text-white hover:text-brand-orange transition-colors duration-300 cursor-pointer"
-                onClick={onClose}
-            >
-                {link.name}
-            </h2>
+            <TransitionLink href={link.href}>
+                <h2 
+                    ref={el => { if(el) linksRef.current[index] = el; }}
+                    className="ey-heading-xl text-white hover:text-brand-orange transition-colors duration-300 cursor-pointer block"
+                    onClick={onClose}
+                >
+                    {link.name}
+                </h2>
+            </TransitionLink>
           </div>
         ))}
       </div>

@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TransitionLink from '@/components/TransitionLink';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,10 +63,10 @@ export default function Footer({ isHome = false }: FooterProps) {
                         </div>
                         <div className="flex flex-col gap-4">
                             <h4 className="ey-subheading text-black font-black uppercase tracking-widest">Company</h4>
-                            <a href="/" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Home</a>
-                            <a href="/portfolio" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Portfolio</a>
-                            <a href="/contact" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Contact</a>
-                            <a href="/policies" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Policies</a>
+                            <TransitionLink href="/" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Home</TransitionLink>
+                            <TransitionLink href="/portfolio" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Portfolio</TransitionLink>
+                            <TransitionLink href="/contact" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Contact</TransitionLink>
+                            <TransitionLink href="/policies" className="ey-body text-white/80 hover:text-white hover:translate-x-1 transition-transform">Policies</TransitionLink>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import TransitionLink from '@/components/TransitionLink';
 import MenuOverlay from './MenuOverlay';
 
 export default function Navbar() {
@@ -74,36 +75,40 @@ export default function Navbar() {
                     <span className={`block h-[2px] w-5 transition-all duration-300 group-hover:w-8 ${useLightControls ? 'bg-white' : 'bg-[var(--color-brand-orange)]'}`} />
                 </button>
 
-                <div className="justify-self-center flex items-center">
-                    <div 
-                        className={`h-8 w-32 md:h-10 md:w-40 transition-colors duration-300 ${useLightControls ? 'bg-white' : 'bg-[var(--color-brand-orange)]'}`}
-                        style={{
-                            maskImage: 'url(/logo.png)',
-                            maskSize: 'contain',
-                            maskRepeat: 'no-repeat',
-                            maskPosition: 'center',
-                            WebkitMaskImage: 'url(/logo.png)',
-                            WebkitMaskSize: 'contain',
-                            WebkitMaskRepeat: 'no-repeat',
-                            WebkitMaskPosition: 'center',
-                        }}
-                        aria-label="EYEVIEW"
-                        role="img"
-                    />
+                <div className="justify-self-center flex items-center cursor-pointer">
+                    <TransitionLink href="/">
+                        <div 
+                            className={`h-8 w-32 md:h-10 md:w-40 transition-colors duration-300 ${useLightControls ? 'bg-white' : 'bg-[var(--color-brand-orange)]'}`}
+                            style={{
+                                maskImage: 'url(/logo.png)',
+                                maskSize: 'contain',
+                                maskRepeat: 'no-repeat',
+                                maskPosition: 'center',
+                                WebkitMaskImage: 'url(/logo.png)',
+                                WebkitMaskSize: 'contain',
+                                WebkitMaskRepeat: 'no-repeat',
+                                WebkitMaskPosition: 'center',
+                            }}
+                            aria-label="EYEVIEW"
+                            role="img"
+                        />
+                    </TransitionLink>
                 </div>
 
                 <div className="justify-self-end inline-flex items-center gap-2">
-                    <button
-                        type="button"
-                        aria-label="Get in touch"
-                        className={`inline-flex items-center rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors duration-300 ${
-                            useLightControls
-                                ? 'bg-white text-[var(--color-brand-orange)]'
-                                : 'bg-[var(--color-brand-orange)] text-white'
-                        }`}
-                    >
-                        Get in touch
-                    </button>
+                    <TransitionLink href="/contact">
+                        <button
+                            type="button"
+                            aria-label="Get in touch"
+                            className={`inline-flex items-center rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors duration-300 ${
+                                useLightControls
+                                    ? 'bg-white text-[var(--color-brand-orange)]'
+                                    : 'bg-[var(--color-brand-orange)] text-white'
+                            }`}
+                        >
+                            Get in touch
+                        </button>
+                    </TransitionLink>
 
                     <button
                         type="button"

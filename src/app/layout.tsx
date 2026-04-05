@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
-import Preloader from '@/components/Preloader';
+import GlobalTransitionOverlay from '@/components/GlobalTransitionOverlay';
 
 const akzidenzGrotesk = localFont({
   variable: '--font-akzidenz',
@@ -84,9 +85,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="light bg-white text-gray-900 scroll-smooth selection:bg-brand-orange selection:text-white">
       <body className={`${akzidenzGrotesk.variable} ${agrandirTight.variable} ${autheniaTextured.variable} font-sans antialiased relative min-h-screen bg-white text-gray-900`}>
-        <Preloader />
+        <GlobalTransitionOverlay />
         <SmoothScroll />
         {children}
+        <Analytics />
       </body>
     </html>
   );
