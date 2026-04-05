@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-brand-red: #D32F2F;
+  --color-brand-orange: #fb6902;
+  --color-brand-black: #050505;
+  --color-brand-dark: #111111;
+  --color-brand-gray: #1E1E1E;
 
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --font-sans: var(--font-akzidenz);
+  --font-outfit: var(--font-agrandir);
+  --font-script: var(--font-authenia);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #050505;
+    --card: #ffffff;
+    --card-foreground: #050505;
+    --border: #e5e5e5;
+    --input: #e5e5e5;
+    --primary: #fb6902;
+    --primary-foreground: #ffffff;
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased selection:bg-brand-orange selection:text-white;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .ey-heading-xl {
+    @apply font-outfit font-extrabold uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(2.5rem,7vw,6.5rem)];
+  }
+
+  .ey-heading-lg {
+    @apply font-outfit font-extrabold uppercase tracking-[-0.06em] leading-[1] text-[clamp(2rem,5vw,4rem)];
+  }
+
+  .ey-heading-md {
+    @apply font-outfit font-extrabold uppercase tracking-[-0.01em] leading-tight text-[clamp(1.5rem,3vw,2.5rem)];
+  }
+
+  .ey-heading-sm {
+    @apply font-outfit font-extrabold uppercase tracking-[-0.01em] leading-tight text-[clamp(1.25rem,2vw,1.75rem)];
+  }
+
+  .ey-subheading {
+    @apply font-sans font-medium uppercase tracking-[0.08em] leading-tight;
+  }
+
+  .ey-body {
+    @apply font-sans font-normal leading-relaxed;
+  }
+
+  .ey-btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-[var(--color-brand-orange)] px-6 py-3 font-sans text-[0.85rem] font-bold uppercase tracking-[0.1em] text-white transition-all hover:bg-[var(--color-brand-black)] hover:-translate-y-0.5;
+  }
+
+  .ey-btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-[var(--color-brand-black)] px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.1em] text-[var(--color-brand-black)] transition-all hover:bg-[var(--color-brand-black)] hover:text-white;
+  }
+
+  .ey-btn-outline-white {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-white/90 px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.1em] text-white transition-all hover:bg-white hover:text-[var(--color-brand-orange)];
+  }
+
+  .ey-card {
+    @apply rounded-2xl border border-white/40 bg-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-500;
+  }
+
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-brand-orange;
+  }
+}
+
+@keyframes ribbon-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ribbon-marquee {
+  width: max-content;
+  will-change: transform;
+  animation: ribbon-scroll 18s linear infinite;
+}
+
+.ribbon-track {
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-marquee {
+    animation: none;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }

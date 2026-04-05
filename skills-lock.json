@@ -1,0 +1,196 @@
+{
+  "generatedAt": "2026-04-05T07:33:54.095Z",
+  "canonicalPath": ".github/.agents/skills",
+  "mirrors": [
+    ".agents/skills",
+    ".windsurf/skills",
+    ".trae/skills"
+  ],
+  "skills": [
+    {
+      "name": "ab-test-setup",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "ad-creative",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "ai-seo",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "analytics-tracking",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "churn-prevention",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "cold-email",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "competitor-alternatives",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "content-strategy",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "copy-editing",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "copywriting",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "customer-research",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "email-sequence",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "eyeview-branding",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "form-cro",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "free-tool-strategy",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "launch-strategy",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "lead-magnets",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "marketing-ideas",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "marketing-psychology",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "onboarding-cro",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "page-cro",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "paid-ads",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "paywall-upgrade-cro",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "popup-cro",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "pricing-strategy",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "product-marketing-context",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "programmatic-seo",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "referral-program",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "revops",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "sales-enablement",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "schema-markup",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "seo-audit",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "signup-flow-cro",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "site-architecture",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "social-content",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    },
+    {
+      "name": "web-design-guidelines",
+      "source": "local-canonical",
+      "hash": "not-tracked"
+    }
+  ]
+}
