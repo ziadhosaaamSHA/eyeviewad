@@ -9,12 +9,16 @@ interface TransitionLinkProps {
   href: string;
   className?: string;
   children: React.ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-export default function TransitionLink({ href, className, children }: TransitionLinkProps) {
+export default function TransitionLink({ href, className, children, onClick }: TransitionLinkProps) {
   const router = useRouter();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(e);
+    if (e.defaultPrevented) return;
+
     e.preventDefault();
     if (window.location.pathname !== href) {
         animatePageOut(href, router);

@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import TransitionLink from '@/components/TransitionLink';
 import MenuOverlay from './MenuOverlay';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Navbar() {
     const navRef = useRef<HTMLElement>(null);
@@ -95,7 +96,10 @@ export default function Navbar() {
                 </div>
 
                 <div className="justify-self-end inline-flex items-center gap-2">
-                    <TransitionLink href="/contact">
+                    <TransitionLink
+                        href="/contact"
+                        onClick={() => trackEvent('cta_clicked', { location: 'navbar', cta_text: 'Get in touch', destination: '/contact' })}
+                    >
                         <button
                             type="button"
                             aria-label="Get in touch"
@@ -124,7 +128,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Layout */}
-            <div className="flex md:hidden items-center justify-between bg-white/90 backdrop-blur-md px-4 py-3 rounded-2xl shadow-sm border border-black/5">
+            <div className="flex md:hidden items-center justify-between bg-white/90 backdrop-blur-md px-4 py-3 rounded-2xl shadow-sm border border-black/5 transition-colors duration-300">
                 <TransitionLink href="/">
                     <div 
                         className="h-7 w-28 transition-colors duration-300 bg-[var(--color-brand-orange)]"
@@ -143,15 +147,17 @@ export default function Navbar() {
                     />
                 </TransitionLink>
                 
-                <button
-                    type="button"
-                    onClick={() => setIsMenuOpen(true)}
-                    aria-label="Open menu"
-                    className="inline-flex flex-col items-end gap-1.5 p-2 rounded-full hover:bg-black/5 transition-colors"
-                >
-                    <span className="block h-[2.5px] w-6 bg-[var(--color-brand-black)] rounded-full" />
-                    <span className="block h-[2.5px] w-4 bg-[var(--color-brand-orange)] rounded-full" />
-                </button>
+                <div className="flex items-center gap-4">
+                    <button
+                        type="button"
+                        onClick={() => setIsMenuOpen(true)}
+                        aria-label="Open menu"
+                        className="inline-flex flex-col items-end gap-1.5 p-2 rounded-full hover:bg-black/5 transition-colors"
+                    >
+                        <span className="block h-[2.5px] w-6 bg-[var(--color-brand-black)] rounded-full transition-colors duration-300" />
+                        <span className="block h-[2.5px] w-4 bg-[var(--color-brand-orange)] rounded-full transition-colors duration-300" />
+                    </button>
+                </div>
             </div>
         </nav>
         <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

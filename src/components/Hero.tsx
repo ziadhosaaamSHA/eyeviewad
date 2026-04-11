@@ -7,6 +7,7 @@ import TransitionLink from '@/components/TransitionLink';
 import { FloatingIconsHero } from '@/components/ui/floating-icons-hero-section';
 import { demoIcons } from '@/components/FloatingIconsHeroDemo';
 import EyesSvg from '@/components/EyesSvg';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -117,16 +118,24 @@ export default function Hero() {
                 {/* Hero CTA Buttons - Chunkier on mobile, Stacked */}
                 <div className="w-full max-w-[280px] sm:max-w-md pt-8 md:pt-10 mx-auto transition-all p-anim">
                     <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3 md:gap-4">
-                        <TransitionLink href="/portfolio" className="w-full flex-1">
-                            <button className="group w-full inline-flex items-center justify-center rounded-full border-2 border-[var(--color-brand-black)] px-6 py-[18px] md:py-4 font-sans text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-brand-black)] transition-all hover:bg-[var(--color-brand-black)] hover:text-white active:scale-95">
+                        <TransitionLink
+                            href="/portfolio"
+                            className="group w-full flex-1 inline-flex items-center justify-center rounded-full border-2 border-[var(--color-brand-black)] px-6 py-[18px] md:py-4 font-sans text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-brand-black)] transition-all hover:bg-[var(--color-brand-black)] hover:text-white active:scale-95"
+                            onClick={() => trackEvent('cta_clicked', { location: 'hero', cta_text: 'Our Portfolio', destination: '/portfolio' })}
+                        >
+                            <span>
                                 Our Portfolio
-                            </button>
+                            </span>
                         </TransitionLink>
 
-                        <TransitionLink href="/contact" className="w-full flex-1">
-                            <button className="group w-full inline-flex items-center justify-center rounded-full bg-[var(--color-brand-orange)] px-6 py-[18px] md:py-4 font-sans text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-white transition-all shadow-[0_8px_20px_rgba(251,105,2,0.25)] hover:bg-[var(--color-brand-black)] hover:shadow-none hover:-translate-y-1 active:scale-95">
+                        <TransitionLink
+                            href="/contact"
+                            className="group w-full flex-1 inline-flex items-center justify-center rounded-full bg-[var(--color-brand-orange)] px-6 py-[18px] md:py-4 font-sans text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-white transition-all shadow-[0_8px_20px_rgba(251,105,2,0.25)] hover:bg-[var(--color-brand-black)] hover:shadow-none hover:-translate-y-1 active:scale-95"
+                            onClick={() => trackEvent('cta_clicked', { location: 'hero', cta_text: 'Book Your Call', destination: '/contact' })}
+                        >
+                            <span>
                                 Book Your Call
-                            </button>
+                            </span>
                         </TransitionLink>
                     </div>
                 </div>

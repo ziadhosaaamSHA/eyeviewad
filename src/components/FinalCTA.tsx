@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 export default function FinalCTA() {
     return (
@@ -16,8 +16,18 @@ export default function FinalCTA() {
                     </h2>
 
                     <p className="ey-body text-xl md:text-2xl text-gray-600 font-medium max-w-xl text-balance">
-                        Book your free 30-minute growth audit call directly with our calendar. Let's find your hidden revenue and map out a bulletproof scaling strategy.
+                        Book your free 30-minute growth audit call directly with our calendar. Let&apos;s find your hidden revenue and map out a bulletproof scaling strategy.
                     </p>
+
+                    <a
+                        href="https://calendly.com/acmesales"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="ey-btn-primary mt-8"
+                        onClick={() => trackEvent('cta_clicked', { location: 'final_cta', cta_text: 'Book Growth Audit', destination: 'calendly' })}
+                    >
+                        Book Growth Audit
+                    </a>
                 </div>
 
                 {/* Calendly Inline Widget Mockup */}
@@ -33,6 +43,7 @@ export default function FinalCTA() {
                             height="100%" 
                             frameBorder="0" 
                             title="Select a Date & Time - Calendly"
+                            onLoad={() => trackEvent('widget_loaded', { widget_name: 'calendly_inline', location: 'final_cta' })}
                         ></iframe>
                     </div>
                 </div>

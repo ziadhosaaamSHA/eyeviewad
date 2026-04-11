@@ -1,8 +1,33 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Contact() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    trackEvent('form_submitted', {
+      form_name: 'contact_page',
+      has_name: Boolean(name),
+      has_email: Boolean(email),
+      message_length: message.length,
+    });
+
+    setIsSubmitted(true);
+    form.reset();
+  };
+
   return (
     <main className="text-gray-900 min-h-screen font-sans flex flex-col bg-white">
       <Navbar />
@@ -12,10 +37,10 @@ export default function Contact() {
         {/* Contact Intro */}
         <div className="flex flex-col">
           <h1 className="ey-heading-lg text-gray-900 mb-6">
-            LET'S <span className="text-brand-orange">CONNECT</span>
+            LET&apos;S <span className="text-brand-orange">CONNECT</span>
           </h1>
           <p className="ey-body text-xl text-gray-600 mb-12 max-w-lg">
-            Stop leaving revenue on the table. Drop us a message, and let's craft a system to dominate your market.
+            Stop leaving revenue on the table. Drop us a message, and let&apos;s craft a system to dominate your market.
           </p>
           
           <div className="flex flex-col gap-6">
@@ -37,20 +62,26 @@ export default function Contact() {
         {/* Contact Form Scaffold */}
         <div className="ey-card bg-gray-50 border-gray-200 p-8 md:p-12 shadow-none rounded-3xl w-full relative">
             <h3 className="ey-heading-sm mb-8 text-brand-orange">SEND A MESSAGE</h3>
-            <form className="flex flex-col gap-6 w-full">
+          <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-2">
-                    <label className="ey-subheading text-gray-500 text-xs">Name</label>
-                    <input type="text" className="bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange ey-body" placeholder="Your name" />
+              <label htmlFor="contact-name" className="ey-subheading text-gray-500 text-xs">Name</label>
+              <input id="contact-name" name="name" type="text" required className="bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange ey-body" placeholder="Your name" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label className="ey-subheading text-gray-500 text-xs">Email</label>
-                    <input type="email" className="bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange ey-body" placeholder="your@email.com" />
+              <label htmlFor="contact-email" className="ey-subheading text-gray-500 text-xs">Email</label>
+              <input id="contact-email" name="email" type="email" required className="bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange ey-body" placeholder="your@email.com" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label className="ey-subheading text-gray-500 text-xs">Message</label>
-                    <textarea rows={4} className="bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange ey-body resize-none" placeholder="Tell us about your project..."></textarea>
+              <label htmlFor="contact-message" className="ey-subheading text-gray-500 text-xs">Message</label>
+              <textarea id="contact-message" name="message" rows={4} required className="bg-white border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange ey-body resize-none" placeholder="Tell us about your project..."></textarea>
                 </div>
-                <button type="button" className="ey-btn-primary w-full mt-4">Submit Inquiry</button>
+            <button type="submit" className="ey-btn-primary w-full mt-4">Submit Inquiry</button>
+
+            {isSubmitted && (
+              <p className="ey-body text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-4 py-3" role="status">
+              Thanks — your message is in. We&apos;ll get back to you shortly.
+              </p>
+            )}
             </form>
         </div>
 
