@@ -84,8 +84,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light bg-white text-gray-900 scroll-smooth selection:bg-brand-orange selection:text-white">
-      <body className={`${akzidenzGrotesk.variable} ${agrandirTight.variable} ${autheniaTextured.variable} font-sans antialiased relative min-h-screen bg-white text-gray-900`}>
+    <html lang="en" className="scroll-smooth selection:bg-brand-orange selection:text-white">
+      <body className={`${akzidenzGrotesk.variable} ${agrandirTight.variable} ${autheniaTextured.variable} font-sans antialiased relative min-h-screen bg-background text-foreground transition-colors duration-300`}>
         <GlobalTransitionOverlay />
         <CustomCursor />
         <SmoothScroll />

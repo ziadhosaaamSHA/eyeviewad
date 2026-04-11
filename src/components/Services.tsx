@@ -14,7 +14,7 @@ const PANELS = [
     body: "Engage your audience with scroll-stopping content, data-driven strategy, and targeted campaigns that convert followers into fiercely loyal customers.",
     accent: "#fb6902", // brand-orange
     bg: "#ffffff", // white
-    dark: "#050505", // brand-black
+    textColor: "#050505", // brand-black
   },
   {
     label: "02",
@@ -22,7 +22,7 @@ const PANELS = [
     body: "Lightning-fast, highly-converting digital experiences. We build scalable websites and applications perfectly aligned with your brand's unique identity.",
     accent: "#050505", // brand-black
     bg: "#fb6902", // brand-orange
-    dark: "#ffffff", // white
+    textColor: "#ffffff", // white
   },
   {
     label: "03",
@@ -30,7 +30,7 @@ const PANELS = [
     body: "Cinematic videography and high-end photography that capture your brand's essence. Elevate your presence with stunning visuals that tell your story.",
     accent: "#fb6902", // brand-orange
     bg: "#111111", // brand-dark
-    dark: "#ffffff", // white
+    textColor: "#ffffff", // white
   }
 ];
 
@@ -138,8 +138,8 @@ export default function Services() {
                         <span className="font-sans font-bold uppercase tracking-[0.15em] text-xs md:text-sm" style={{ color: panel.accent }}>Service {panel.label}</span>
                         <div className="h-[1px] w-12" style={{ background: panel.accent, opacity: 0.3 }} />
                     </div>
-                    <h2 className="ey-heading-lg mb-6 lg:mb-8 max-w-3xl" style={{ color: panel.dark }}>{panel.title}</h2>
-                    <p className="ey-body text-base lg:text-2xl max-w-2xl leading-relaxed" style={{ color: panel.dark, opacity: 0.85 }}>{panel.body}</p>
+                    <h2 className="ey-heading-lg mb-6 lg:mb-8 max-w-3xl" style={{ color: panel.textColor }}>{panel.title}</h2>
+                    <p className="ey-body text-base lg:text-2xl max-w-2xl leading-relaxed" style={{ color: panel.textColor, opacity: 0.85 }}>{panel.body}</p>
                     
                     {/* Progress dots - hidden on mobile since it's unneeded for vertical scroll */}
                     <div className="hidden lg:flex gap-3 mt-12">

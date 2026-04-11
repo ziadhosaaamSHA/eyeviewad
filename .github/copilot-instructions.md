@@ -9,8 +9,8 @@
   - optional scripts/data assets (example: `ui-ux-pro-max/scripts/*.py`, `ui-ux-pro-max/data/*.csv`).
 
 ## Big-picture structure and boundaries
-- Canonical/project-scoped skills are under `.github/.agents/skills/`.
-- Compatibility mirrors exist under `.agents/skills/`, `.windsurf/skills/`, and `.trae/skills/`.
+- Canonical/project-scoped skills are under `.github/agents/skills/`.
+- Compatibility mirrors exist under `agents/skills/`, `.windsurf/skills/`, and `.trae/skills/`.
 - Root `skills-lock.json` is the source lockfile for installed skills (source repo + hash). Treat it as the integration manifest.
 
 ## Editing conventions specific to this repo
@@ -28,8 +28,8 @@
 - Skills are added from external repos and tracked in lockfile (example pattern already used in this workspace):
   - `npx skills add <repo-url> --skill <skill-name>`
 - For `ui-ux-pro-max`, validate search tooling locally after changes:
-  - `python3 .github/.agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain style`
-  - `python3 .github/.agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system`
+  - `python3 .github/agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain style`
+  - `python3 .github/agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system`
 
 ## Integration points
 - External skill sources are declared in `skills-lock.json` (for example `coreyhaines31/marketingskills`, `nextlevelbuilder/ui-ux-pro-max-skill`).
@@ -152,8 +152,8 @@ Use this routing logic while working:
 ### 5) UI/UX Pro Max operating notes
 - Keep `ui-ux-pro-max` data and scripts in sync when editing behavior.
 - Sanity-check design recommendations with:
-  - `python3 .github/.agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain style`
-  - `python3 .github/.agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system`
+  - `python3 .github/agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain style`
+  - `python3 .github/agents/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system`
 - If stack-specific guidance is needed, use the `data/stacks/*.csv` backed routing in the script outputs.
 
 ### 6) Quality gate before finishing work
